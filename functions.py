@@ -15,7 +15,8 @@ from openai import OpenAI
 
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
-# app_email = 'xxxxxxxxxxx@gmail.com'
+# app_email = 'xxxxxxxxxxx@gmail.com' 
+# or as env variable
 # app_email = os.getenv(app_email)
 
 def selection_excluding(lst, exception):
@@ -78,7 +79,7 @@ Cheers,
 Your Secret Santa team.
 '''
 
-    ## change with gmail_send is that the token is saved as 'credentials' environment variable
+    ## use code below if you authenticated and you want to use token.json from file and not env variable
     # if os.path.exists('token.json'):
     #     creds = Credentials.from_authorized_user_file('token.json', SCOPES)
     # else:
@@ -124,7 +125,14 @@ def chatgpt_call(user_info):
         user_info = 'No info has been provided. Make a generic recommendation.'
 
     client = OpenAI(
-        # api_key=os.getenv('OPENAI_API_KEY'),
+    # If you have set the OpenAI API key as an environment variable named 'OPENAI_API_KEY',
+    # you can skip the line below as the client will automatically use it. Use the line below
+    # if you have named the env variable as something else.
+    # api_key=os.getenv('API_KEY_something_else'),
+
+    # if you prefer to hardcode the API key (not recommended for security reasons),
+    # you can uncomment the line below and provide the key directly.
+    # api_key="your_openai_api_key"
     )
 
     completion  = client.chat.completions.create(
