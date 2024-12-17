@@ -77,22 +77,50 @@ To authenticate Gmail API and generate your token:
 **6. Configure Environment Variables**  
 You need to configure the following environment variables (or use files as described):
 
-```bash
-# OpenAI API Key (required as an environment variable)
-OPENAI_API_KEY=your_openai_api_key  
+- **OpenAI API Key** (required as an environment variable):
+  - `OPENAI_API_KEY=your_openai_api_key`  
 
-# Your Gmail app email (optional as an environment variable)
-app_email=your_email@gmail.com  
+- **Your Gmail app email** (optional as an environment variable):
+  - `app_email=your_email@gmail.com`  
 
-# Token (choose one of the following methods)
-# Option 1: Use token.json for persistent storage (Place token.json in the root directory; no need to add token in the environment)
-# Option 2: Use environment variables for token management (store token details as an environment variable)
-```
+- **Token** (choose one of the following methods):
+  - **Option 1: Use `token.json` for persistent storage**  
+    If you have already authenticated with the Gmail API and generated a `token.json` file, place the `token.json` file in the root directory. The application will automatically use it.  
+    Example code:  
+    ```python
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    else:
+        raise FileNotFoundError("Token file not found. Please authenticate first.")
+    ```
+  
+  - **Option 2: Use environment variables for token management**  
+    If you prefer environment-based token management, you can store the token details as a JSON string in an environment variable named `token`.  
+    Example code:  
+    ```python
+    creds = None  
+    if 'token' in os.environ:
+        token = json.loads(os.getenv('token'))
+        creds = Credentials.from_authorized_user_info(token, SCOPES)
+    ```
+    In this case, there is **no need** for a `token.json` file. Simply set the token environment variable.
 
-> **Note:**  
-> - If you generated a `token.json` file during the Gmail API setup (Step 5), place it in the root directory. The application will automatically use it.
-> - If you prefer environment-based token management, you can store the `token` as an environment variable instead of using `token.json`.
+---
 
+### Additional Notes:
+
+- **OpenAI API Key**:  
+  If your OpenAI API key is set as an environment variable named `OPENAI_API_KEY`, the client will automatically use it. If you have named the environment variable differently, use the code below to fetch the key:  
+  ```python
+  api_key = os.getenv('API_KEY_something_else')
+  ```
+
+- **Hardcoding the OpenAI API Key**:  
+  If you prefer to hardcode the API key (not recommended for security reasons), you can uncomment the line below and provide the key directly:  
+  ```python
+  api_key = "your_openai_api_key"
+  ```
+  
 ---
 
 ### 7. **Run the Application**  
