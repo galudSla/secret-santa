@@ -85,8 +85,8 @@ Your Secret Santa team.
     #     raise FileNotFoundError("Token file not found. Please authenticate first.")
 
     creds = None  
-    if 'credentials' in os.environ:
-        token = json.loads(os.getenv('credentials'))
+    if 'token' in os.environ:
+        token = json.loads(os.getenv('token'))
         creds = Credentials.from_authorized_user_info(token, SCOPES)
     else:
         raise FileNotFoundError("Token file not found. Please authenticate first.")
