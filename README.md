@@ -55,7 +55,15 @@ Before running the app, you must configure the **Gmail API**:
 
 ---
 
-### 4. **Authenticate Gmail API**  
+### 4. **Install Dependencies**  
+Run the following command to install required libraries:  
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 5. **Authenticate Gmail API**  
 To authenticate Gmail API and generate your token:  
 1. Run the `functions.py` script:  
    ```bash
@@ -63,14 +71,6 @@ To authenticate Gmail API and generate your token:
    ```
 2. Follow the OAuth instructions to allow access.  
 3. This creates a `token.json` file or saves a token in your environment.  
-
----
-
-### 5. **Install Dependencies**  
-Run the following command to install required libraries:  
-```bash
-pip install -r requirements.txt
-```
 
 ---
 
