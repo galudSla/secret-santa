@@ -3,7 +3,7 @@
 ## **Description**  
 The **Secret Santa Generator** is a Python-based web application that organizes Secret Santa events. It randomly pairs participants, generates thoughtful gift recommendations using OpenAI's GPT API, and sends personalized emails via the Gmail API.  
 
-A **live demonstration** is available on [**Hugging Face Spaces**](https://huggingface.co/spaces/your_space_link), so you can test the tool without local setup!  
+A **live demonstration** is available on [**Hugging Face Spaces**](https://huggingface.co/spaces/galudSla/secret-santa), so you can test the tool without local setup!  
 
 ---
 
