@@ -195,3 +195,7 @@ def chatgpt_call(user_info):
 #         print(f"An error occurred: {e}")
 #     finally:
 #         s.quit()
+
+
+if __name__ == "__main__":
+    authenticate()
