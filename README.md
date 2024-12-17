@@ -70,22 +70,28 @@ To authenticate Gmail API and generate your token:
    python functions.py
    ```
 2. Follow the OAuth instructions to allow access.  
-3. This creates a `token.json` file or saves a token in your environment.  
+3. This creates a `token.json` file.  
 
 ---
 
-### 6. **Configure Environment Variables**  
-Create a `.env` file in the root directory and add:  
-```env
-# OpenAI API Key
-OPENAI_API_KEY=your_openai_api_key
+**6. Configure Environment Variables**  
+You need to configure the following environment variables (or use files as described):
 
-# Your Gmail app email
-app_email=your_email@gmail.com
+```bash
+# OpenAI API Key (required as an environment variable)
+OPENAI_API_KEY=your_openai_api_key  
 
-# Token (optional if using environment-based token management)
-token={"token_details_here"}
+# Your Gmail app email (optional as an environment variable)
+app_email=your_email@gmail.com  
+
+# Token (choose one of the following methods)
+# Option 1: Use token.json for persistent storage (Place token.json in the root directory; no need to add token in the environment)
+# Option 2: Use environment variables for token management (store token details as an environment variable)
 ```
+
+> **Note:**  
+> - If you generated a `token.json` file during the Gmail API setup (Step 5), place it in the root directory. The application will automatically use it.
+> - If you prefer environment-based token management, you can store the `token` as an environment variable instead of using `token.json`.
 
 ---
 
